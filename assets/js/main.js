@@ -117,9 +117,14 @@
       }
       if (status) {
         status.textContent = 'Thank you, ' + name.value.trim() +
-          '! Your message has been prepared. You can also reach us directly at info@cryptocoinnews.com.';
+          '! Your email app should open with the message ready to send. ' +
+          'If it does not, email us directly at info@cryptocoinnews.com.';
         status.style.display = 'block';
       }
+      var subject = 'Website contact from ' + name.value.trim();
+      var bodyText = message.value.trim() + '\n\nFrom: ' + name.value.trim() + ' <' + email.value.trim() + '>';
+      window.location.href = 'mailto:info@cryptocoinnews.com?subject=' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyText);
       form.reset();
     });
   }
